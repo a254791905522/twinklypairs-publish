@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwinklyPairs - Memory Matching Puzzle</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #F0F4F8;
+            color: #172033;
+            line-height: 1.6;
+        }
+        .hero {
+            background: linear-gradient(135deg, #FFFFFF 0%, #EAF2FF 52%, #D8E8FF 100%);
+            color: #162447;
+            text-align: center;
+            padding: 64px 20px 52px;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.10);
+        }
+        .hero h1 {
+            font-size: clamp(34px, 7vw, 58px);
+            font-weight: 850;
+            margin-bottom: 10px;
+            letter-spacing: -0.8px;
+        }
+        .hero h1 span { color: #2563EB; }
+        .hero .subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            color: #334155;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        .hero .intro {
+            max-width: 680px;
+            margin: 0 auto 24px;
+            color: #475569;
+            font-size: 17px;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 14px;
+            color: #1E3A8A;
+            font-weight: 700;
+        }
+        .section {
+            padding: 52px 20px;
+        }
+        .section h2 {
+            font-size: 30px;
+            color: #162447;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 20px;
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+        .screenshot-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.12);
+            border: 1px solid rgba(37, 99, 235, 0.10);
+        }
+        .screenshot-card img {
+            width: 100%;
+            aspect-ratio: 9 / 19.5;
+            object-fit: cover;
+            display: block;
+            background: #0A0E27;
+        }
+        .screenshot-card .label {
+            padding: 12px 14px;
+            font-size: 14px;
+            color: #475569;
+            text-align: center;
+            font-weight: 700;
+        }
+        .features-section { background: #fff; }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .feature-item {
+            background: #F0F7FF;
+            border: 1px solid #D7E8FF;
+            border-radius: 14px;
+            padding: 20px;
+        }
+        .feature-item h3 {
+            color: #1E3A8A;
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+        .feature-item p {
+            color: #475569;
+            font-size: 15px;
+        }
+        .description-card, .support-card {
+            max-width: 780px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.10);
+            border: 1px solid rgba(37, 99, 235, 0.10);
+        }
+        .description-card h2, .support-card h2 {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        .description-card p, .support-card p, .support-card li {
+            margin-bottom: 14px;
+            color: #475569;
+        }
+        .support-card h3 {
+            font-size: 18px;
+            color: #1E3A8A;
+            margin: 22px 0 8px;
+        }
+        .support-card ul { margin-left: 20px; }
+        .info-box {
+            background: #162447;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .info-box h2 {
+            color: #93C5FD;
+            margin-bottom: 20px;
+        }
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px 28px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .info-item strong {
+            display: block;
+            color: #93C5FD;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        .info-item span { font-size: 15px; }
+        .footer {
+            text-align: center;
+            padding: 26px 20px;
+            color: #64748B;
+            font-size: 14px;
+        }
+        .footer a { color: #2563EB; font-weight: 700; }
+        @media (max-width: 700px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .description-card, .support-card { padding: 28px 22px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1><span>TwinklyPairs</span></h1>
+        <p class="subtitle">A relaxing memory matching puzzle for quick play.</p>
+        <p class="intro">Flip glowing cards, remember each word, and match every pair before time runs out. Play bite-sized levels offline with clear visuals, star ratings, and friendly progression.</p>
+        <div class="badge">Memory matching · iPhone only · 30-second challenges · No ads · No in-app purchases</div>
+    </header>
+
+    <section class="section screenshots-section">
+        <h2>Gameplay Screenshots</h2>
+        <div class="screenshots-grid">
+            <div class="screenshot-card">
+                <img src="screenshots_65/01_menu.png" alt="TwinklyPairs main menu">
+                <div class="label">Main Menu</div>
+            </div>
+            <div class="screenshot-card">
+                <img src="screenshots_65/02_level_select.png" alt="TwinklyPairs level selection screen">
+                <div class="label">Level Select</div>
+            </div>
+            <div class="screenshot-card">
+                <img src="screenshots_65/03_game_start.png" alt="TwinklyPairs game start state">
+                <div class="label">Game Start</div>
+            </div>
+            <div class="screenshot-card">
+                <img src="screenshots_65/04_gameplay.png" alt="TwinklyPairs memory matching gameplay">
+                <div class="label">Matching Cards</div>
+            </div>
+            <div class="screenshot-card">
+                <img src="screenshots_65/05_game_over.png" alt="TwinklyPairs game over popup">
+                <div class="label">Game Over</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section features-section">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>Flip and Match</h3>
+                <p>Turn over cards, remember the words, and find every matching pair on the board.</p>
+            </div>
+            <div class="feature-item">
+                <h3>30-Second Challenge</h3>
+                <p>Each round is quick and focused, with a countdown that keeps every level engaging.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Level Progression</h3>
+                <p>Choose unlocked levels, replay completed puzzles, and continue through the next-level flow.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Star Ratings</h3>
+                <p>Complete levels and collect local star ratings as you improve your memory and timing.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Clear Cozy Style</h3>
+                <p>Glowing cards, readable words, and soft colors make the game easy to follow.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Offline and Private</h3>
+                <p>No ads, no purchases, no accounts, and no data collection.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section description-section">
+        <div class="description-card">
+            <h2>About the Game</h2>
+            <p>TwinklyPairs is a single-player memory card game built around simple rules and quick puzzle sessions. Each level asks you to flip cards, remember where each word appears, and match all pairs before the timer ends.</p>
+            <p>The game is designed for casual play and memory practice. A level select screen, retry flow, next-level button, and local progress make it easy to play one round or continue through multiple levels.</p>
+        </div>
+    </section>
+
+    <section class="section support-section">
+        <div class="support-card">
+            <h2>Support</h2>
+            <p>If you need help, have a question, or want to report an issue, please use the support information below before submitting your request through the app's App Store product page.</p>
+
+            <h3>Common Questions</h3>
+            <ul>
+                <li><strong>Progress is missing:</strong> Progress is stored locally on your device. Deleting the app may remove local progress.</li>
+                <li><strong>Sound or haptics are not working:</strong> Check your device volume, silent mode, and any in-app settings if available.</li>
+                <li><strong>A level ends too quickly:</strong> Each puzzle uses a 30-second countdown. Tap Retry to play the same level again.</li>
+                <li><strong>Display issue:</strong> Use a supported iPhone running iOS 13.0 or later and update to the latest App Store version.</li>
+            </ul>
+
+            <h3>Request Support</h3>
+            <p>To request support without sharing personal information on this website, open the app's App Store product page and use the available App Store support or review channel with your device model, iOS version, and a short description of the issue.</p>
+        </div>
+    </section>
+
+    <section class="info-box">
+        <h2>App Information</h2>
+        <div class="info-grid">
+            <div class="info-item"><strong>Genre</strong><span>Memory / Puzzle</span></div>
+            <div class="info-item"><strong>Compatibility</strong><span>iPhone only, iOS 13.0+</span></div>
+            <div class="info-item"><strong>Age Rating</strong><span>4+</span></div>
+            <div class="info-item"><strong>Version</strong><span>1.0</span></div>
+            <div class="info-item"><strong>Languages</strong><span>English</span></div>
+            <div class="info-item"><strong>Privacy</strong><span>No Data Collection</span></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 TwinklyPairs · <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
